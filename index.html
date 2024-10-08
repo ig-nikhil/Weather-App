@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather-App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #83a4d4, #b6fbff);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+
+        .weather-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .search-box {
+            margin-bottom: 20px;
+        }
+
+        .search-box input {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        .search-box button {
+            padding: 10px 20px;
+            background-color: #1e90ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .search-box button:hover {
+            background-color: #104e8b;
+        }
+
+        .weather-details img {
+            width: 64px;
+            height: 64px;
+        }
+
+        .weather-info {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .info-box {
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            padding: 10px;
+            margin: 5px;
+            width: 45%;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="weather-container">
+        <div class="search-box">
+            <input id="city-name" type="text" placeholder="Enter City Name">
+            <button id="search_button">Search</button>
+        </div>
+
+        <div class="weather-details">
+            <h1 id="cityName">Daltonganj</h1>
+            <h2 id="CountryName">India</h2>
+            <img id="weather-icon" src="" alt="Weather Icon">
+            <h3 id="condition">Sunny</h3>
+            <p><strong>Temperature:</strong> <span id="temp">34.3</span>°C</p>
+        </div>
+
+        <div class="weather-info">
+            <div class="info-box">
+                <div class="info-title">Wind</div>
+                <p>Speed: <span id="wind-speed">15</span> kph</p>
+                <p>Direction: <span id="wind-dir">S</span></p>
+            </div>
+            <div class="info-box">
+                <div class="info-title">Pressure</div>
+                <p><span id="pressure">993</span> mb</p>
+            </div>
+            <div class="info-box">
+                <div class="info-title">Humidity</div>
+                <p><span id="humidity">94</span>%</p>
+            </div>
+            <div class="info-box">
+                <div class="info-title">Visibility</div>
+                <p><span id="visibility">7</span> km</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
