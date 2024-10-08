@@ -1,5 +1,7 @@
 const city = document.getElementById("city-name");
 const button = document.getElementById("search_button");
+const location_button = document.getElementById("city-location")
+
 
 const nameofCity = document.getElementById("cityName");
 const nameofCountry = document.getElementById("CountryName");
@@ -39,4 +41,46 @@ button.addEventListener("click", async () => {
     } else {
         alert("City not found! Please try again.");
     }
+});
+
+// search by location taking
+
+async function getDatabyLocation(lat,long) {
+    try {
+        const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=eeea9ccb07484887ba064045240810&q=${lat},${long}&aqi=yes`);
+        return await response.json();
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
+async function gotlocation(position){
+    const result =  await getDatabyLocation(position.coords.latitude,position.coords.longitude)
+
+    if (result && result.location) {
+        nameofCity.innerText = result.location.name;
+        nameofCountry.innerText = result.location.country;
+        temp.innerText = result.current.temp_c;
+        condition.innerText = result.current.condition.text;
+        weatherIcon.src = `https:${result.current.condition.icon}`;
+        windSpeed.innerText = result.current.wind_kph;
+        windDir.innerText = result.current.wind_dir;
+        pressure.innerText = result.current.pressure_mb;
+        humidity.innerText = result.current.humidity;
+        visibility.innerText = result.current.vis_km;
+    } else {
+        alert("City not found! Please try again.");
+    }
+}
+
+function faillocation(){
+    console.log("error in getting location")
+}
+
+location_button.addEventListener("click", async () => {
+    
+    navigator.geolocation.getCurrentPosition(gotlocation,faillocation);
+
+
 });
